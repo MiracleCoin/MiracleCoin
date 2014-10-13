@@ -1,0 +1,9 @@
+Building MiracleCoin
+
+See doc/readme-qt.rst for instructions on building MiracleCoin QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of MiracleCoin.
+
+See doc/build-*.txt for instructions on building miraclecoind,
+the intended-for-services, no-graphical-interface, reference
+implementation of MiracleCoin.
