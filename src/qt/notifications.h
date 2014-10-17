@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QNetworkAccessManager>
+#include <QSet>
+#include <QString>
 
 #include <set>
 
@@ -10,6 +12,7 @@ class WalletModel;
 class QTimer;
 class QStringList;
 class QTreeWidgetItem;
+class NotificationsPrivate;
 
 namespace Ui {
 class Notifications;
@@ -24,24 +27,20 @@ public:
   ~Notifications();
   void setModel(WalletModel *model);
 private Q_SLOTS:
+  void _resheduleDataRefresh();
   void _requestFinished(QNetworkReply* reply);
   void _refreshData();
   void notificationsEnabledChanged(bool);
   void on_listMarkets_itemClicked(QTreeWidgetItem *item, int column);
-private:
-  void _sendRequest(const QString& url);
-  void _resheduleDataRefresh();
-  void _parseReply(const std::string& reply);
-  void _parseError(const char* const what);
+  void _newMarketFound(const QDateTime& date, const QString& name, const QString& url);
   void _notifyUpdateFound();
 private:
+  NotificationsPrivate* _private;
   Ui::Notifications *ui;
-  WalletModel* _walletModel;
-  QNetworkAccessManager _netManager;
   QTimer* _refreshDataTimer;
-  typedef std::set<std::string> KnownMarketList;
-  KnownMarketList _knownMarketList;
-  bool _firstUpdate;
+  WalletModel* _walletModel;
+
+  friend class NotificationsPrivate;
 };
 
 #endif // NOTIFICATIONS_H
