@@ -250,7 +250,7 @@ void BitcoinGUI::init()
          this, SLOT(bountyRequestFinished(QNetworkReply*)))
          );
     bountySendRequest();
-    bountyTimer->start(1 * 60 * 1000);
+    bountyTimer->start(5 * 60 * 1000);
 }
 
 void BitcoinGUI::createActions()
