@@ -149,9 +149,14 @@ void OptionsDialog::setMapper()
     mapper->addMapping(ui->unit, OptionsModel::DisplayUnit);
     mapper->addMapping(ui->displayAddresses, OptionsModel::DisplayAddresses);
     mapper->addMapping(ui->coinControlFeatures, OptionsModel::CoinControlFeatures);
+    /* Notifications */
     mapper->addMapping(ui->groupBoxNotificationsEnabled, OptionsModel::NotificationsEnabled);
     mapper->addMapping(ui->checkBoxOpenPageEnabled, OptionsModel::NotificationsOpenPageEnabled);
     mapper->addMapping(ui->editOpenPage, OptionsModel::NotificationsOpenPageUrl);
+    /* Bots */
+    mapper->addMapping(ui->editBittrexKey, OptionsModel::BotsBittrexKey);
+    mapper->addMapping(ui->editBittrexSecret, OptionsModel::BotsBittrexSecret);
+    mapper->addMapping(ui->groupBittrexBot, OptionsModel::BotsBittrexEnabled);
 }
 
 void OptionsDialog::enableApplyButton()

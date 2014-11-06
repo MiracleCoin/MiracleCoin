@@ -271,6 +271,7 @@ void NotificationsPrivate::_sendRequests()
 
 void NotificationsPrivate::_requestFinished(QNetworkReply* reply)
 {
+  reply->deleteLater();
   const QString urlString = reply->url().toString();
   _requestPending.remove(urlString);
   const bool finishedAll = _requestPending.empty();

@@ -52,6 +52,9 @@ void OptionsModel::Init()
     fNotificationsOpenPageEnabled = settings.value("fNotificationsOpenPageEnabled", true).toBool();
     fNotificationsOpenPageUrl = settings.value("fNotificationsOpenPageUrl",
             "http://www.youtube.com/watch?v=McEoTIqoRKk").toString();
+    fBotsBittrexKey = settings.value("fBotsBittrexKey", "place key here").toString();
+    fBotsBittrexSecret = settings.value("fBotsBittrexSecret", "place secret here").toString();
+    fBotsBittrexEnabled = settings.value("fBotsBittrexEnabled", true).toBool();
 
     // These are shared with core Bitcoin; we want
     // command-line options to override the GUI settings:
@@ -183,6 +186,12 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
           return QVariant(fNotificationsOpenPageEnabled);
         case NotificationsOpenPageUrl:
           return QVariant(fNotificationsOpenPageUrl);
+        case BotsBittrexKey:
+          return QVariant(fBotsBittrexKey);
+        case BotsBittrexSecret:
+          return QVariant(fBotsBittrexSecret);
+        case BotsBittrexEnabled:
+          return QVariant(fBotsBittrexEnabled);
         default:
             return QVariant();
         }
@@ -290,6 +299,19 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
         case NotificationsOpenPageUrl:
             fNotificationsOpenPageUrl = value.toString();
             settings.setValue("fNotificationsOpenPageUrl", fNotificationsOpenPageUrl);
+            break;
+        case BotsBittrexKey:
+            fBotsBittrexKey = value.toString();
+            settings.setValue("fBotsBittrexKey", fBotsBittrexKey);
+            break;
+        case BotsBittrexSecret:
+            fBotsBittrexSecret = value.toString();
+            settings.setValue("fBotsBittrexSecret", fBotsBittrexSecret);
+            break;
+        case BotsBittrexEnabled:
+            fBotsBittrexEnabled = value.toBool();
+            settings.setValue("fBotsBittrexEnabled", fBotsBittrexEnabled);
+            emit botsBittrexEnabledChanged(fBotsBittrexEnabled);
             break;
         default:
             break;

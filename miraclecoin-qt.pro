@@ -220,7 +220,10 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/notifications.h \
     src/qt/calculatorpage.h \
     src/qt/marketplacepage.h \
-    src/qt/botspage.h
+    src/qt/botspage.h \
+    src/qt/parser.h \
+    src/qt/parsermap.h \
+    src/qt/sellbot.h \
 
 SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/transactiontablemodel.cpp \
@@ -307,7 +310,9 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/notifications.cpp \
     src/qt/calculatorpage.cpp \
     src/qt/marketplacepage.cpp \
-    src/qt/botspage.cpp
+    src/qt/botspage.cpp \
+    src/qt/parser.cpp \
+    src/qt/sellbot.cpp \
 
 RESOURCES += \
     src/qt/bitcoin.qrc
@@ -328,7 +333,8 @@ FORMS += \
     src/qt/forms/notifications.ui \
     src/qt/forms/calculatorpage.ui \
     src/qt/forms/marketplacepage.ui \
-    src/qt/forms/botspage.ui
+    src/qt/forms/botspage.ui \
+    src/qt/forms/sellbot.ui
 
 contains(USE_QRCODE, 1) {
 HEADERS += src/qt/qrcodedialog.h

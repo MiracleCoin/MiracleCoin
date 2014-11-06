@@ -34,6 +34,9 @@ public:
         NotificationsEnabled, // bool
         NotificationsOpenPageEnabled, // bool
         NotificationsOpenPageUrl, // QString
+        BotsBittrexKey,           // QString
+        BotsBittrexSecret,        // QString
+        BotsBittrexEnabled,       // bool
         OptionIDRowCount,
     };
 
@@ -57,6 +60,9 @@ public:
     bool getNotificationsEnabled() const { return fNotificationsEnabled; }
     bool getNotificationsOpenPageEnabled() const { return fNotificationsOpenPageEnabled; }
     QString getNotificationsOpenPageUrl() const { return fNotificationsOpenPageUrl; }
+    QString getBotsBittrexKey() const { return fBotsBittrexKey; }
+    QString getBotsBittrexSecret() const { return fBotsBittrexSecret; }
+    bool getBotsBittrexEnabled() const { return fBotsBittrexEnabled; }
 
 private:
     int nDisplayUnit;
@@ -68,12 +74,16 @@ private:
     bool fNotificationsEnabled;
     bool fNotificationsOpenPageEnabled;
     QString fNotificationsOpenPageUrl;
+    QString fBotsBittrexKey;
+    QString fBotsBittrexSecret;
+    bool fBotsBittrexEnabled;
 
 signals:
     void displayUnitChanged(int unit);
     void transactionFeeChanged(qint64);
     void coinControlFeaturesChanged(bool);
     void notificationsEnabledChanged(bool);
+    void botsBittrexEnabledChanged(bool);
 };
 
 #endif // OPTIONSMODEL_H
